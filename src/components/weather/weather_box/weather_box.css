@@ -1,0 +1,111 @@
+.weather_box {
+    max-width: 600px;
+    position: relative;
+    border-radius: 25% 10%;
+}
+
+.weather_background {
+    width: 100%;
+    border-radius: 25% 10%;
+}
+
+.weatherImg {
+    width: 30px;
+    margin-right: 5px;
+}
+
+.addInform {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addInformBox {
+    display: flex;
+    align-items: center;
+}
+
+.weather_info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0 60px 0 60px;
+    top: 60px;
+    color: white;
+}
+
+.title {
+    font-size: 25px;
+}
+
+.titleAndForm {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.iconWeathr {
+    width: 60px;
+}
+
+.temperatureInfo {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.temperature {
+    font-size: 45px;
+}
+
+.weatherText {
+    font-size: 25px;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+}
+
+.feelsLike {
+    font-size: 17px;
+}
+
+.styleError {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    border-radius: 25% 10%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.619);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.imgError {
+    margin-top: 40px;
+    width: 95px;
+}
+
+.errorText {
+    font-size: 40px;
+    color: white;
+    margin-top: 40px;
+}
+
+.errorButton {
+    padding: 10px 50px;
+    margin-top: 40px;
+    cursor: pointer;
+    background: none;
+    color: white;
+    border-color: white;
+    transition: .3s;
+    border: 1px solid;
+}
+
+.errorButton:hover {
+    background-color: red;
+    border: 1px solid;
+    border-radius: 15px;
+}
