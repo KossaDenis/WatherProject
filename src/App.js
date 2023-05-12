@@ -1,13 +1,18 @@
-import React from 'react';
-import Weather from './components/weather/weather';
-import './style/App.css'
+import React from 'react'
+import { Routes, Route } from 'react-router-dom';
+import home from './pages/home/components/home'
+import MonthStatistics from './pages/home/MonthStatistics/components copy/MonthStatistics'
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <Weather />
+    <div className='container'>
+      <Routes>
+        <Route path='/' exact Component={home} />
+        <Route path='/monthStatistics' exact Component={MonthStatistics} />
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

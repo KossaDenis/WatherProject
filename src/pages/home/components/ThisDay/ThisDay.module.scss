@@ -1,0 +1,43 @@
+@import '../../../../styles/variables.scss';
+
+.thisDayBlock {
+    background: #FFFFFF;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.topBlock {
+    display: flex;
+}
+
+.temp {
+    font-size: 96px;
+    font-weight: 500;
+    color: #4793FF;
+}
+
+.day {
+    font-weight: 400;
+    font-size: 40px;
+}
+
+.weatherIcon {
+    margin-left: 81px;
+}
+
+.time {
+    font-weight: 400;
+    font-size: 25px;
+    margin-top: 31px;
+    margin-bottom: 14px;
+    color: #939CB0;
+}
+
+.city {
+    font-weight: 400;
+    font-size: 25px;
+    color: #939CB0;
+}
