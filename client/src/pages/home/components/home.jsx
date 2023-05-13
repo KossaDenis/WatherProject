@@ -15,8 +15,10 @@ const Home = () => {
   const [weather, setWeather] = useState(null);
   const API_Key = '699a32a6da04fd9ad1d72a9df5226b4d';
   
-  
   const isWeatherLoaded = weather !== null;
+
+ 
+
   return (
     <div className={s.homeBlock}>
       <Header setCity={setCity} cityName={city} />
