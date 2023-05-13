@@ -4,12 +4,13 @@ const { Schema, model } = require('mongoose');
  * * 
  */
 const WeatherSchema = new Schema({
-  date: { type: Number, unique: true, required: true },
-  time: { type: Number, unique: true, required: true },
-  temp: { type: Number, unique: true, required: true },
-  pressure: { type: Number, unique: true, required: true },
-  humidity: { type: Number, unique: true, required: true },
-  wind: { type: Number, unique: true, required: true },
+  date: { type: Number, required: true },
+  time: { type: Number, required: true },
+  temp: { type: Number, required: true },
+  pressure: { type: Number, required: true },
+  humidity: { type: Number, required: true },
+  wind: { type: Number, required: true },
+  town: { type: String, required: true },
 });
 
 module.exports = model('Weather', WeatherSchema);
