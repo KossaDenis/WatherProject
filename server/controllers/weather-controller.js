@@ -11,6 +11,16 @@ class WeatherController {
       next(e);
     }
   }
+  async getData(req, res, next) {
+    try{
+      const weathers = await weatherService.getData()
+      return res.json(weathers)
+    }catch(e){
+      next(e);
+    }
+  }
 }
 
 module.exports = new WeatherController();
+
+

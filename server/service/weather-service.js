@@ -6,6 +6,11 @@ class WeatherService {
     const weather = await WeatherModel.create(data)
     return weather
   }
+  async getData(){
+    const weathers = await WeatherModel.find()
+    console.log(weathers);
+    return weathers
+  }
 }
 
 module.exports = new WeatherService();
