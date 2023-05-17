@@ -4,12 +4,13 @@ import s from './day.module.scss'
 const Card = ({day}) => {
   return (
     <div className={s.cardBlock}>
-        <h3 className={s.title}>{day.day}</h3>
-        <p className={s.date}>{day.day_info}</p>
-        <img className={s.icon} src="" alt="icon" />
-        <p className={s.tempDay}>{day.temp_day}</p>
-        <p className={s.tempNight}>{day.temp_night}</p>
-        <p className={s.info}>{day.info}</p>
+        <h3 className={s.town}>Город: {day.town}</h3>
+        <p className={s.date}>Дата: {day.date} Мая</p>
+        <p className={s.time}>Время: {day.time}</p>
+        <p className={s.temp}>Температура: {day.temp}°</p>
+        <p className={s.pressure}>Давление: {day.pressure}мм</p>
+        <p className={s.humidity}>Влажность: {day.humidity}%</p>
+        <p className={s.wind}>Ветер: {day.wind}м/с</p>
     </div>
   )
 }

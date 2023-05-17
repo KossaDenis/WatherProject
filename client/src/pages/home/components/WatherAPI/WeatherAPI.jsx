@@ -16,4 +16,3 @@ const WeatherAPI = ({ city, API_Key, setWeather, setLon, setLat }) => {
 };
 
 export default WeatherAPI;
-// https://pro.openweathermap.org/data/2.5/forecast/climate?q=London&appid=${API_Key}

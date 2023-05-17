@@ -1,31 +1,61 @@
-import React from 'react'
-import Card from './card'
-import s from './day.module.scss'
+import React from 'react';
+import Card from './card';
+import s from './day.module.scss';
 
-const Day = () => {
-    const days = [
-        {
-            day: 'Сегодня',
-            day_info: '28 авг',
-            icon: 'sun',
-            temp_day: '+12°',
-            temp_night: '+10°',
-            info: 'Облачно'
-        },
-        {
-            day: 'Завтра',
-            day_info: '29 авг',
-            icon: 'sun',
-            temp_day: '+16°',
-            temp_night: '+5°',
-            info: 'Облачно'
+const Day = ({ dataMongo, city, showDataOneDay, showAllData, dataThreeDay, showDateLastWeek }) => {
+    let days;
+
+    let currentDateOneDay = new Date();
+    let dayLastOne = currentDateOneDay.getDate() - 1
+
+    let currentDate = new Date();
+    let threeDaysAgo = currentDate.getDate() - 3;
+
+    let currentDateWeek = new Date();
+    let lastWeek = currentDate.getDate() - 7;
+
+    if (city === 'ПМР') {
+        days = dataMongo;
+        if (showDataOneDay) {
+            days = days.filter((day) => day.date.toString().slice(0, 2) == dayLastOne);
+            if (showAllData) {
+                days = dataMongo;
+            }
         }
-    ]
+    } else {
+        days = dataMongo.filter((day) => day.town === city);
+        if (showDataOneDay) {
+            days = days.filter((day) => day.date.toString().slice(0, 2) == dayLastOne);
+            if (showAllData) {
+                days = dataMongo;
+                days = dataMongo.filter((day) => day.town === city);
+            }
+
+        }
+    }
+    if (dataThreeDay) {
+        days = days.filter((day) => {
+            return parseInt(day.date, 10) >= threeDaysAgo && parseInt(day.date, 10) < currentDate.getDate();
+        });
+    }
+
+    if (showDateLastWeek) {
+        days = days.filter((day) => {
+            return parseInt(day.date, 10) >= lastWeek && parseInt(day.date, 10) < currentDateWeek.getDate();
+        });
+    }
+
+    const sortedDays = days.sort((a, b) => new Date(a.date) - new Date(b.date));
+
     return (
         <div className={s.dayBlock}>
-            {days.map((day) => (<Card day={day} key={day.day} />))}
+            {sortedDays.map((day) => (
+                <Card className={s.card} day={day} key={day._id} />
+            ))}
         </div>
-    )
-}
+    );
+};
 
-export default Day
+
+
+export default Day;

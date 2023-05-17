@@ -1,35 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import s from './header.module.scss';
 import logo from '../../assets/img/logo/weather.png';
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Header = ({ setCity, cityName }) => {
-  const [value, setValue] = useState('');
-  const [placeholder, setPlaceholder] = useState('Введите город')
-
-  const handleKeyDown = (event) => {
-    if (event.keyCode === 13) {
-      handleSubmit();
-    }
-  };
-
-  const handleSubmit = () => {
-    setCity(value);
-    setValue('');
-  };
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+const Header = ({ setCity }) => {
+  const [selectedCity, setSelectedCity] = useState('');
 
   useEffect(() => {
-    if (cityName !== true) {
-      setPlaceholder('error')
+    if (selectedCity) {
+      setCity(selectedCity);
     }
-    if(cityName){
-      setPlaceholder('Введите город')
-    }
-  }, [cityName])
+  }, [selectedCity, setCity]);
+
+  const handleChange = (event) => {
+    setSelectedCity(event.target.value);
+  };
+
+  const navigate = useNavigate()
+
+  const toggleArchive = () => {
+    navigate('/archive');
+ };
 
   return (
     <header className={s.header}>
@@ -37,16 +28,26 @@ const Header = ({ setCity, cityName }) => {
         <img className={s.logo} src={logo} alt="" />
         <h1 className={s.title}>Погода</h1>
       </div>
+      <div>
+        <button onClick={toggleArchive} className={s.buttonArchive}>Архив</button>
+      </div>
       <div className={s.rightBlock}>
-        <input
-          placeholder={placeholder}
-          className={s.input}
-          type="text"
-          value={value}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          autoFocus
-        />
+        <form>
+          <select
+            className={s.select}
+            value={selectedCity}
+            onChange={handleChange}
+          >
+            <option value="">Выберите город</option>
+            <option value="Григориополь">Григориополь</option>
+            <option value="Днестровск">Днестровск</option>
+            <option value="Дубоссары">Дубоссары</option>
+            <option value="Каменка">Каменка</option>
+            <option value="Рыбница">Рыбница</option>
+            <option value="Слободзея">Слободзея</option>
+            <option value="Тирасполь">Тирасполь</option>
+          </select>
+        </form>
       </div>
     </header>
   );

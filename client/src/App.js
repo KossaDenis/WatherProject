@@ -1,18 +1,17 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom';
-import home from './pages/home/components/home'
-import MonthStatistics from './pages/home/MonthStatistics/components copy/MonthStatistics'
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Archive from './pages/home/archive/archive';
+import Home from './pages/home/components/home';
 
 const App = () => {
   return (
     <div className='container'>
-      <Routes>
-        <Route path='/' exact Component={home} />
-        <Route path='/monthStatistics' exact Component={MonthStatistics} />
-      </Routes>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/archive' element={<Archive />} />
+        </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

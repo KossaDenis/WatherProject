@@ -1,5 +1,6 @@
 .dayBlock {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .cardBlock {
@@ -9,10 +10,36 @@
     margin-right: 20px;
     width: 149px;
     height: 100%;
+    margin-top: 10px;
 
     :not(:last-child) {
         margin-right: 0px;
     }
+}
+
+.tabsContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select {
+    all: unset;
+    width: 200px;
+    font-size: 20px;
+    background: rgba(71, 147, 255, 0.2);
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.card {
+    width: calc(100% / 6 - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.card:last-child {
+    margin-right: 0;
 }
 
 .dateBlock {
@@ -48,16 +75,21 @@
     background: #4793FF;
 }
 
-.title {
-    font-size: 20px;
+.date {
+    font-weight: 400;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.town {
+    font-size: 17px;
     font-weight: 500;
     margin-bottom: 7px;
 }
 
-.date {
+.time {
     font-weight: 400;
     font-size: 17px;
-    color: #939CB0;
     margin-bottom: 12px;
 }
 
@@ -65,20 +97,26 @@
     margin-bottom: 13px;
 }
 
-.tempDay {
+.temp {
     font-weight: 500;
-    font-size: 20px;
-}
-
-.tempNight {
-    font-weight: 400;
     font-size: 15px;
-    color: #939CB0;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
 }
 
-.info {
-    font-weight: 400;
-    font-size: 18px;
-    color: #939CB0;
+.pressure {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.humidity {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.wind {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 5px;
 }

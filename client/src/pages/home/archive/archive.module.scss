@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerTitle {
+    color: #4793FF;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    text-transform: uppercase;
+}
+
+.buttonMain {
+    all: unset;
+    color: #4793FF;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    border: #4793FF solid;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.buttonMain:hover {
+    background-color: #4793FF;
+    color: white;
+    border-radius: 20px;
+}
