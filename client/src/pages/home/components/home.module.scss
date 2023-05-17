@@ -2,3 +2,22 @@
     display: flex;
     margin-top: 30px;
 }
+
+.button {
+    all: unset;
+    color: #4793FF;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    border: #4793FF solid;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: .3s;
+    margin-top: 50px;
+}
+
+.button:hover {
+    background-color: #4793FF;
+    color: white;
+    border-radius: 20px;
+}

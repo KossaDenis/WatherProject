@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../../shared/header/header';
-import Tabs from './Days/tabs';
 import s from './home.module.scss';
 import ThisDay from './ThisDay/ThisDay';
 import ThisDayInfo from './ThisDayInfo/ThisDayInfo';
@@ -9,8 +8,6 @@ import WeatherAPI from './WatherAPI/WeatherAPI';
 import WeatherService from '../../../services/WeatherService';
 import WeatherModel from '../../../models/WeatherModel';
 import Archive from '../archive/archive';
-import { useNavigate } from 'react-router-dom';
-
 
 const Home = () => {
   const [city, setCity] = useState('Тирасполь');
@@ -34,15 +31,22 @@ const Home = () => {
   const minutes = date.getMinutes().toString().padStart(2, '0');
   const formattedTime = `${hours}.${minutes}`;
 
-  const navigate = useNavigate()
+  const fetchWeatherData = async (city) => {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=ru&appid=${API_Key}`
+    );
+    const weatherData = await response.json();
+    return weatherData;
+  };
 
-  const handleButtonClick = () => {
-    const cities = ['Григориополь', 'Днестровск', 'Дубоссары', 'Каменка', 'Рыбница', 'Слободзея', 'Тирасполь'];
+  const fetchData = async () => {
+    const cities = ['Бендеры','Григориополь', 'Днестровск', 'Дубоссары', 'Каменка', 'Рыбница', 'Слободзея', 'Тирасполь'];
 
-    cities.forEach((city) => {
-      WeatherAPI(city, API_Key) // Функция для получения данных о погоде для каждого города
-        .then((weatherData) => {
-          WeatherService.create(new WeatherModel(
+    try {
+      for (const city of cities) {
+        const weatherData = await fetchWeatherData(city);
+        await WeatherService.create(
+          new WeatherModel(
             formattedDateString,
             formattedTime,
             Math.round(weatherData?.main.temp),
@@ -50,24 +54,18 @@ const Home = () => {
             weatherData?.main.humidity,
             weatherData?.wind.speed,
             city
-          ))
-            .then(() => {
-              console.log(`Данные для города ${city} занесены в базу данных`);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
+          )
+        );
+        console.log(`Данные для города ${city} занесены в базу данных`);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   if (showArchive) {
     return <Archive weather={weather} city={city} />;
   }
-
 
   return (
     <div className={s.homeBlock}>
@@ -78,7 +76,7 @@ const Home = () => {
       </div>
       <WeatherAPI city={city} API_Key={API_Key} setWeather={setWeather} setLon={setLon} setLat={setLat} />
       {isWeatherLoaded && <TimeAPI city={city} setTime={setTime} time={time} lon={lon} lat={lat} />}
-      <button onClick={handleButtonClick}>Записать данные в БД</button>
+      <button className={s.button} onClick={fetchData}>Записать данные в АРХИВ</button>
     </div>
   )
 }

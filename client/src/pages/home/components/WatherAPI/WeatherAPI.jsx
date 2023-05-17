@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 
+
 const WeatherAPI = ({ city, API_Key, setWeather, setLon, setLat }) => {
     useEffect(() => {
         const fetchWeatherData = async () => {

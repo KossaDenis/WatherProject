@@ -39,6 +39,7 @@ const Header = ({ setCity }) => {
             onChange={handleChange}
           >
             <option value="">Выберите город</option>
+            <option value="Бендеры">Бендеры</option>
             <option value="Григориополь">Григориополь</option>
             <option value="Днестровск">Днестровск</option>
             <option value="Дубоссары">Дубоссары</option>

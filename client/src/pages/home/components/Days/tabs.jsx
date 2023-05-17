@@ -50,6 +50,7 @@ const Tabs = ({ dataMongo }) => {
                     <form>
                         <select className={s.select} onChange={handleCityChange} defaultValue='ПМР'>
                             <option value="ПМР">ПМР</option>
+                            <option value="Бендеры">Бендеры</option>
                             <option value="Григориополь">Григориополь</option>
                             <option value="Днестровск">Днестровск</option>
                             <option value="Дубоссары">Дубоссары</option>

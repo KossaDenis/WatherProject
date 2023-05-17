@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from './card';
 import s from './day.module.scss';
 
 const Day = ({ dataMongo, city, showDataOneDay, showAllData, dataThreeDay, showDateLastWeek }) => {
+
+
     let days;
 
     let currentDateOneDay = new Date();
@@ -47,13 +49,21 @@ const Day = ({ dataMongo, city, showDataOneDay, showAllData, dataThreeDay, showD
 
     const sortedDays = days.sort((a, b) => new Date(a.date) - new Date(b.date));
 
+
+    const hasData = dataMongo.some((item) => item.town === city);
+
     return (
         <div className={s.dayBlock}>
-            {sortedDays.map((day) => (
-                <Card className={s.card} day={day} key={day._id} />
-            ))}
+            {sortedDays.length != 0 ? (
+                sortedDays.map((day) => (
+                    <Card className={s.card} day={day} key={day._id} />
+                ))
+            ) : (
+                <p className={s.emptyArray}>Данных нет для выбранного города</p>
+            )}
         </div>
     );
+
 };
 
 
